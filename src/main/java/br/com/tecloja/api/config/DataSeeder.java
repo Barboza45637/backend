@@ -111,7 +111,7 @@ public class DataSeeder implements CommandLineRunner {
             p5.setEstoque(30);
             p5.setCategoria(acessorios);
             produtoRepository.save(p5);
-            
+
             Produto p6 = new Produto();
             p6.setNome("Teclado Mecânico Logitech MX Mechanical");
             p6.setDescricao("Switches táteis silenciosos de perfil baixo, iluminação inteligente");

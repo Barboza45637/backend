@@ -77,7 +77,7 @@ public class ProdutoServiceImpl implements ProdutoService {
         Produto produto = produtoRepository.findById(id)
             .filter(Produto::isAtivo)
             .orElseThrow(() -> new ResourceNotFoundException("Produto não encontrado ou inativo com o ID: " + id));
-        
+
         Categoria categoria = categoriaRepository.findById(form.categoriaId())
             .orElseThrow(() -> new ResourceNotFoundException("Categoria não encontrada com o ID: " + form.categoriaId()));
 
@@ -97,7 +97,7 @@ public class ProdutoServiceImpl implements ProdutoService {
         Produto produto = produtoRepository.findById(id)
             .filter(Produto::isAtivo)
             .orElseThrow(() -> new ResourceNotFoundException("Produto não encontrado ou inativo com o ID: " + id));
-        
+
         // Em vez de deletar fisicamente, inativamos o produto (Soft Delete)
         produto.setAtivo(false);
         produtoRepository.save(produto);

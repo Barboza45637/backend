@@ -43,7 +43,6 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.POST, "/api/v1/produtos/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.PUT, "/api/v1/produtos/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.DELETE, "/api/v1/produtos/**").hasRole("ADMIN")
-                
                 .anyRequest().authenticated()
             )
             // sameOrigin: permite frames apenas da mesma origem (seguro para H2 console local)

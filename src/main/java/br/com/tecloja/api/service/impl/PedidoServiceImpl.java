@@ -25,7 +25,7 @@ public class PedidoServiceImpl implements PedidoService {
     private final ProdutoRepository produtoRepository;
 
     public PedidoServiceImpl(PedidoRepository pedidoRepository, ClienteRepository clienteRepository,
-                             ProdutoRepository produtoRepository) {
+                              ProdutoRepository produtoRepository) {
         this.pedidoRepository = pedidoRepository;
         this.clienteRepository = clienteRepository;
         this.produtoRepository = produtoRepository;
@@ -62,7 +62,7 @@ public class PedidoServiceImpl implements PedidoService {
 
             // Regra Crítica de Banco de Dados/Negócio: Validação de Estoque
             if (produto.getEstoque() < itemForm.quantidade()) {
-                log.warn("Falha no checkout: estoque insuficiente para o produto '{}' (ID: {}). Solicitado: {}, Disponível: {}", 
+                log.warn("Falha no checkout: estoque insuficiente para o produto '{}' (ID: {}). Solicitado: {}, Disponível: {}",
                     produto.getNome(), produto.getId(), itemForm.quantidade(), produto.getEstoque());
                 throw new BusinessException(String.format(
                     "Estoque insuficiente para o produto '%s'. Disponível: %d, Solicitado: %d.",
@@ -99,7 +99,7 @@ public class PedidoServiceImpl implements PedidoService {
         if (!clienteRepository.existsById(clienteId)) {
             throw new ResourceNotFoundException("Cliente não encontrado com o ID: " + clienteId);
         }
-        
+
         return pedidoRepository.findPedidosCompletosPorCliente(clienteId).stream()
             .map(PedidoMapper::toDTO)
             .collect(Collectors.toList());
